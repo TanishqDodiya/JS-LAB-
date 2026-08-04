@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vehicle Registration Number Validator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="validator-card" aria-labelledby="title">
+      <h1 id="title" class="title">
+        Vehicle Registration Number
+        <span>Validator</span>
+      </h1>
+
+      <form id="validatorForm" novalidate>
+        <label class="field-label" for="registrationNumber">Registration Number</label>
+        <input
+          id="registrationNumber"
+          name="registrationNumber"
+          type="text"
+          value="MH32BC7376"
+          autocomplete="off"
+          autocapitalize="characters"
+          spellcheck="false"
+          aria-describedby="messageBox"
+        />
+
+        <button type="submit" class="validate-button">
+          <span class="button-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="presentation" focusable="false">
+              <path d="M9.5 16.2 5.8 12.5l-1.4 1.4 5.1 5.1L19.6 8.9l-1.4-1.4z"></path>
+            </svg>
+          </span>
+          <span>Validate</span>
+        </button>
+      </form>
+
+      <div id="messageBox" class="message-box" role="alert" aria-live="polite" hidden></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

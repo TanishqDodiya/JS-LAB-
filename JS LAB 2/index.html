@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Invoice Billing System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="hero-card">
+      <div>
+        <p class="eyebrow">Invoice Billing System</p>
+        <h1>Create Invoices with Ease</h1>
+        <p class="hero-copy">Add products, calculate GST automatically, and generate polished bills in seconds.</p>
+      </div>
+      <div class="hero-badge">
+        <span>GST</span>
+        <strong>18%</strong>
+      </div>
+    </header>
+
+    <main class="layout-grid">
+      <section class="panel form-panel">
+        <div class="panel-header">
+          <h2>Customer Details</h2>
+          <p>Enter billing information before adding items.</p>
+        </div>
+
+        <div class="form-grid two-col">
+          <div class="field-group">
+            <label for="customerName">Customer Name</label>
+            <input id="customerName" type="text" placeholder="Enter customer name" />
+          </div>
+          <div class="field-group">
+            <label for="invoiceDate">Date</label>
+            <input id="invoiceDate" type="date" />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="panel-header compact">
+          <h2>Add Item</h2>
+          <p>Each item is added to the invoice table below.</p>
+        </div>
+
+        <div class="form-grid item-grid">
+          <div class="field-group wide">
+            <label for="productName">Product Name</label>
+            <input id="productName" type="text" placeholder="e.g. Wireless Mouse" />
+          </div>
+          <div class="field-group">
+            <label for="rate">Rate per Unit</label>
+            <input id="rate" type="number" min="0" step="0.01" placeholder="0.00" />
+          </div>
+          <div class="field-group">
+            <label for="quantity">Quantity</label>
+            <input id="quantity" type="number" min="1" step="1" placeholder="1" />
+          </div>
+          <div class="field-group">
+            <label for="discount">Discount (%)</label>
+            <input id="discount" type="number" min="0" max="100" step="0.01" placeholder="0" />
+          </div>
+        </div>
+
+        <div class="actions-row">
+          <button id="addItemBtn" class="btn primary" type="button">Add Item</button>
+          <button id="generateBillBtn" class="btn accent" type="button">Generate Bill</button>
+          <button id="printBtn" class="btn secondary" type="button">Print / Save PDF</button>
+        </div>
+
+        <p id="formMessage" class="form-message" aria-live="polite"></p>
+      </section>
+
+      <section class="panel table-panel">
+        <div class="panel-header compact">
+          <h2>Items Table</h2>
+          <p>Review items before generating the bill.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Rate</th>
+                <th>Qty</th>
+                <th>Discount</th>
+                <th>GST (18%)</th>
+                <th>Amount</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="itemsTableBody">
+              <tr class="empty-row">
+                <td colspan="7">No items added yet.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="summary-card">
+          <div class="panel-header compact">
+            <h2>Bill Summary</h2>
+            <p>Totals update automatically as items are added or removed.</p>
+          </div>
+          <div class="summary-grid">
+            <div><span>Subtotal</span><strong id="subtotal">₹0.00</strong></div>
+            <div><span>Total Discount</span><strong id="totalDiscount">₹0.00</strong></div>
+            <div><span>Total GST (18%)</span><strong id="totalGst">₹0.00</strong></div>
+            <div class="grand-total"><span>Grand Total</span><strong id="grandTotal">₹0.00</strong></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="panel preview-panel" id="invoicePreviewSection">
+      <div class="panel-header compact">
+        <h2>Invoice Preview</h2>
+        <p>This is the generated bill that can be printed or saved as PDF.</p>
+      </div>
+
+      <article class="invoice-preview" id="invoicePreview">
+        <div class="invoice-top">
+          <div>
+            <p class="invoice-label">Invoice For</p>
+            <h3 id="previewCustomerName">Customer Name</h3>
+            <p id="previewDate" class="secondary-text">Date will appear here</p>
+          </div>
+          <div class="invoice-chip">GST 18%</div>
+        </div>
+
+        <div class="table-wrap preview-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Rate</th>
+                <th>Qty</th>
+                <th>Discount</th>
+                <th>GST</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody id="previewTableBody">
+              <tr class="empty-row">
+                <td colspan="6">Generate an invoice to see the preview.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="summary-grid preview-summary">
+          <div><span>Subtotal</span><strong id="previewSubtotal">₹0.00</strong></div>
+          <div><span>Total Discount</span><strong id="previewDiscount">₹0.00</strong></div>
+          <div><span>Total GST</span><strong id="previewGst">₹0.00</strong></div>
+          <div class="grand-total"><span>Grand Total</span><strong id="previewGrandTotal">₹0.00</strong></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel history-panel">
+      <div class="panel-header compact history-head">
+        <div>
+          <h2>Customer History</h2>
+          <p>Previously generated invoices are stored locally in your browser.</p>
+        </div>
+        <button id="clearHistoryBtn" class="btn danger" type="button">Clear History</button>
+      </div>
+      <div id="historyList" class="history-list">
+        <div class="history-empty">No saved invoices yet.</div>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

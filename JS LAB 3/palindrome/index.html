@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindrome Checker</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="card" aria-labelledby="app-title">
+        <h1 id="app-title">Palindrome Checker</h1>
+
+        <form id="palindrome-form" novalidate>
+          <label for="palindrome-input">Enter a Word:</label>
+          <input
+            type="text"
+            id="palindrome-input"
+            name="palindrome-input"
+            placeholder="Type text here"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button type="submit">Check Palindrome</button>
+        </form>
+
+        <p id="result" class="result" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

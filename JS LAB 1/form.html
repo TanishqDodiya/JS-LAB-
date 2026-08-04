@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIT Nagpur | Student Form</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="page-content form-page">
+      <div class="student-card floating-card form-student-card">
+        <p><strong>Name:</strong> Tanishq Dodiya</p>
+        <p><strong>PRN:</strong> 24070521021</p>
+      </div>
+
+      <section class="form-section">
+        <div class="section-heading">
+          <p class="eyebrow">Student Information</p>
+          <h1>Fill in the details below</h1>
+        </div>
+
+        <form id="studentForm" class="student-form" novalidate>
+          <label>
+            Name
+            <input type="text" id="name" name="name" placeholder="Enter your name" />
+          </label>
+
+          <label>
+            PRN
+            <input type="text" id="prn" name="prn" placeholder="Enter your PRN" />
+          </label>
+
+          <label>
+            Department
+            <input type="text" id="department" name="department" placeholder="Enter your department" />
+          </label>
+
+          <label>
+            Email
+            <input type="email" id="email" name="email" placeholder="Enter your email" />
+          </label>
+
+          <button type="submit" class="btn">Submit</button>
+        </form>
+
+        <div id="messageBox" class="message-box" aria-live="polite"></div>
+
+        <a class="back-link" href="index.html">Back to Home</a>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

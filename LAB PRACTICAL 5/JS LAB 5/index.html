@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Maximum and Minimum Values</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <h1>Find Maximum and Minimum Values</h1>
+    <p class="description">Enter numbers separated by commas or spaces to find the highest and lowest values.</p>
+
+    <form id="arrayForm">
+      <label for="numbersInput">Enter numbers</label>
+      <input
+        id="numbersInput"
+        type="text"
+       
+        autocomplete="off"
+        required
+      >
+      <p class="hint">Separate numbers with commas or spaces.</p>
+      <button type="submit">Find Values</button>
+    </form>
+
+    <p id="message" class="message" role="status" aria-live="polite"></p>
+
+    <section class="results" aria-label="Results">
+      <div class="result">
+        <span class="result-label">Highest value</span>
+        <strong id="maximum" class="result-value">-</strong>
+      </div>
+      <div class="result">
+        <span class="result-label">Lowest value</span>
+        <strong id="minimum" class="result-value">-</strong>
+      </div>
+    </section>
+
+    <footer>
+      <div><strong>Made by: TANISHQ DODIYA</strong></div>
+      <div><strong>PRN: 24070521021</strong></div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

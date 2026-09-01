@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>JavaScript String Operations</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+
+    <body>
+        <main class="page-shell">
+            <nav class="topbar" aria-label="Page navigation">
+                <div class="brand-mark"><span>JS</span> String Lab</div>
+                <div class="student-info">
+                    <strong>Name:</strong> TANISHQ DODIYA <br>
+                    <strong>PRN:</strong> 24070521021
+                </div>
+            </nav>
+
+            <header class="hero">
+                <div>
+                    <p class="eyebrow">Practical 06 / JavaScript</p>
+                    <h1>Text, <em>decoded.</em></h1>
+                    <p class="hero-copy">A small workspace for testing the everyday tools behind JavaScript strings.</p>
+                </div>
+                <div class="practical-number" aria-hidden="true">06</div>
+            </header>
+
+            <section class="workspace" aria-label="String operations workspace">
+                <form class="panel input-panel" onsubmit="processString(); return false;">
+                    <div class="panel-kicker">01 / Input</div>
+                    <h2 class="panel-title">Give it some text</h2>
+                    <p class="panel-note">Add a short string and a paragraph to inspect each method.</p>
+
+                    <label class="field">
+                        <span class="field-label">Short string</span>
+                        <input type="text" id="text" value="JavaScript is powerful">
+                    </label>
+
+                    <label class="field">
+                        <span class="field-label">Paragraph for analysis</span>
+                        <textarea id="paragraph" rows="6">JavaScript is a powerful programming language. It is widely used for web development.</textarea>
+                    </label>
+
+                    <button type="submit"><span>Run analysis</span> <b aria-hidden="true">&#8594;</b></button>
+                </form>
+
+                <section class="panel results-panel" id="output" aria-live="polite">
+                    <div class="results-heading">
+                        <h2>Results</h2>
+                        <span>Ready when you are</span>
+                    </div>
+                    <div class="empty-state">
+                        <p>Your results will appear here after you process the input.</p>
+                    </div>
+                </section>
+            </section>
+        </main>
+
+        <script src="script.js"></script>
+    </body>
+</html>

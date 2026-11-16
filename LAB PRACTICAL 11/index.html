@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6f8" />
+    <title>Classly — Class scheduler</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="js/main.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#" aria-label="Classly home">
+          <span class="brand-mark" aria-hidden="true">c</span>
+          <span>classly</span>
+        </a>
+
+        <p class="nav-label">WORKSPACE</p>
+        <nav class="navigation">
+          <a class="nav-item active" href="#overview" aria-current="page">
+            <span class="nav-icon" aria-hidden="true">▦</span>
+            Overview
+          </a>
+          <a class="nav-item" href="#schedule">
+            <span class="nav-icon" aria-hidden="true">▤</span>
+            My classes
+            <span class="nav-count" id="class-count">0</span>
+          </a>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="sidebar-note">
+            <span class="note-icon" aria-hidden="true">✦</span>
+            <p>Small steps every day add up to big things.</p>
+            <span class="note-credit">A LITTLE REMINDER</span>
+          </div>
+          <div class="profile">
+            <div class="avatar" aria-hidden="true">S</div>
+            <div>
+              <strong>Student</strong>
+              <span>Keep learning</span>
+            </div>
+            <span class="profile-menu" aria-hidden="true">···</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content" id="overview">
+        <header class="topbar">
+          <div class="breadcrumb">Workspace <span>/</span> Overview</div>
+          <div class="topbar-right">
+            <span class="live-indicator"><span></span> LIVE</span>
+            <time id="current-date"></time>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="welcome-row">
+            <div>
+              <p class="eyebrow" id="greeting">YOUR LEARNING SPACE</p>
+              <h1>Make today <span>count.</span></h1>
+              <p class="subtitle">A little progress each day goes a long way.</p>
+            </div>
+            <button class="primary-button" id="open-class-form" type="button">
+              <span aria-hidden="true">＋</span> Add a class
+            </button>
+          </section>
+
+          <section class="overview-grid" aria-label="Class overview">
+            <article class="countdown-card" aria-labelledby="countdown-heading">
+              <div class="countdown-topline">
+                <span class="card-kicker"><span class="pulse-dot"></span> UP NEXT</span>
+                <span class="countdown-date" id="next-date"></span>
+              </div>
+              <div class="countdown-content">
+                <div class="countdown-copy">
+                  <p class="subject-label" id="next-subject">No upcoming classes</p>
+                  <h2 id="countdown-heading">You’re all caught up</h2>
+                  <p class="class-meta" id="next-meta"></p>
+                </div>
+                <div class="timer" id="countdown" aria-live="polite" aria-label="Time until next class">
+                  <div class="timer-unit"><strong id="days">00</strong><span>DAYS</span></div>
+                  <span class="timer-colon">:</span>
+                  <div class="timer-unit"><strong id="hours">00</strong><span>HRS</span></div>
+                  <span class="timer-colon">:</span>
+                  <div class="timer-unit"><strong id="minutes">00</strong><span>MIN</span></div>
+                  <span class="timer-colon">:</span>
+                  <div class="timer-unit"><strong id="seconds">00</strong><span>SEC</span></div>
+                </div>
+              </div>
+              <div class="countdown-footer">
+                <span id="countdown-caption">Your next learning moment is getting closer.</span>
+                <span class="footer-sparkle" aria-hidden="true">✳</span>
+              </div>
+            </article>
+
+            <article class="summary-card">
+              <div class="summary-icon violet" aria-hidden="true">▤</div>
+              <p class="summary-label">CLASSES TODAY</p>
+              <div class="summary-value"><strong id="today-count">0</strong><span>on your schedule</span></div>
+              <div class="summary-bottom"><span class="mini-bars" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span id="today-label">Stay curious</span></div>
+            </article>
+
+            <article class="summary-card">
+              <div class="summary-icon mint" aria-hidden="true">◷</div>
+              <p class="summary-label">LEARNING TIME</p>
+              <div class="summary-value"><strong id="learning-hours">0h</strong><span>planned today</span></div>
+              <div class="summary-bottom"><span class="summary-footnote">Make room for what matters</span><span class="tiny-arrow" aria-hidden="true">↗</span></div>
+            </article>
+          </section>
+
+          <section class="schedule-section" id="schedule">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">YOUR PLAN</p>
+                <h2>Upcoming classes <span class="heading-count" id="upcoming-count">0</span></h2>
+              </div>
+              <label class="filter-control">
+                <span class="sr-only">Filter classes</span>
+                <select id="schedule-filter">
+                  <option value="all">All classes</option>
+                  <option value="today">Today</option>
+                  <option value="upcoming">Upcoming</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="schedule-list" id="schedule-list"></div>
+            <div class="empty-state" id="empty-state" hidden>
+              <div class="empty-icon" aria-hidden="true">✎</div>
+              <h3>No classes here yet</h3>
+              <p>Add a class to start building your learning schedule.</p>
+              <button class="text-button" type="button" id="empty-add-class">＋ Add your first class</button>
+            </div>
+          </section>
+
+          <footer class="page-footer">
+            <span>One class at a time. You’ve got this.</span>
+            <span><span class="footer-heart" aria-hidden="true">♥</span> Made for your next big idea</span>
+          </footer>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="class-dialog" id="class-dialog" aria-labelledby="dialog-title">
+      <form class="class-form" id="class-form">
+        <div class="dialog-heading">
+          <div>
+            <p class="eyebrow">BUILD YOUR ROUTINE</p>
+            <h2 id="dialog-title">Add a class</h2>
+          </div>
+          <button class="icon-button" id="close-dialog" type="button" aria-label="Close dialog">×</button>
+        </div>
+        <label>
+          Class name
+          <input name="name" type="text" placeholder="e.g. Creative writing" maxlength="60" required />
+        </label>
+        <div class="form-row">
+          <label>
+            Date
+            <input name="date" type="date" required />
+          </label>
+          <label>
+            Start time
+            <input name="time" type="time" required />
+          </label>
+        </div>
+        <div class="form-row">
+          <label>
+            Duration
+            <select name="duration">
+              <option value="30">30 minutes</option>
+              <option value="45">45 minutes</option>
+              <option value="60" selected>1 hour</option>
+              <option value="90">1.5 hours</option>
+              <option value="120">2 hours</option>
+            </select>
+          </label>
+          <label>
+            Instructor <span class="optional">(optional)</span>
+            <input name="instructor" type="text" placeholder="e.g. Alex Morgan" maxlength="50" />
+          </label>
+        </div>
+        <p class="form-error" id="form-error" role="alert"></p>
+        <button class="primary-button submit-button" type="submit">Add to my schedule <span aria-hidden="true">→</span></button>
+      </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
